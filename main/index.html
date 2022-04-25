@@ -7,6 +7,8 @@
     <title>Home Page</title>
 
     <link rel="stylesheet" href="./../CSS/style.css">
+
+
 </head>
 <body>
     
@@ -28,12 +30,45 @@
     <P>This is place holder text because im a better programmer than writer</P>
 
 
-    <p2 class="menu-link" href="">Novice</p2><br>
-    <p2 class="menu-link" href="">Apprentice</p2><br>
-    <p2 class="menu-link" href="">Adept</p2><br>    
-    <p2 class="menu-link" href="">Expert</p2><br>    
-    <p2 class="menu-link" href="">Master</p2><br>    
-    <p2 class="menu-link" href="">Legendary</p2><br>        
+    <p id="no" class="menu-link" href="">Novice</p><br>
+    <p id="ap" class="menu-link" href="">Apprentice</p><br>
+    <p id="ad" class="menu-link" href="">Adept</p><br>    
+    <p id="ex" class="menu-link" href="">Expert</p><br>    
+    <p id="ma" class="menu-link" href="">Master</p><br>    
+    <p id="le" class="menu-link" href="">Legendary</p><br>
+    
+    <script>
+        document.getElementById("no").onclick = function() {noFunction()};
+        document.getElementById("ap").onclick = function() {apFunction()};
+        document.getElementById("ad").onclick = function() {adFunction()};
+        document.getElementById("ex").onclick = function() {exFunction()};
+        document.getElementById("ma").onclick = function() {maFunction()};
+        document.getElementById("le").onclick = function() {leFunction()};
+        
+        function noFunction() {
+          document.getElementById("no").innerHTML = "YOU CLICKED ME!";
+        }
+
+        function apFunction() {
+            document.getElementById("ap").innerHTML = "YOU CLICKED ME!";
+        }
+          
+        function adFunction () {
+          document.getElementById("ad").innerHTML = "YOU CLICKED ME!";
+        }
+
+        function exFunction () {
+          document.getElementById("ex").innerHTML = "YOU CLICKED ME!";
+        }
+
+        function maFunction () {
+          document.getElementById("ma").innerHTML = "YOU CLICKED ME!";
+        }
+
+        function leFunction () {
+          document.getElementById("le").innerHTML = "YOU CLICKED ME!";
+        }
+    </script>
 
 
     <footer>            
