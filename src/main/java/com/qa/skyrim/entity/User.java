@@ -1,23 +1,18 @@
 package com.qa.skyrim.entity;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity 
 @Table(name = "user")
@@ -36,11 +31,6 @@ public class User {
 	@NotNull
 	@Email
 	private String email;
-	
-	// @OneToMany signifies a one to many relationship between user and posts where User is the 
-	// parent of the relationship. Post owns the relationship as it stores the id of the user
-	// - mappedBy signifies the name of the field in Post.class which owns the relationship
-	// - targetEntity specifies the class that is being mapped
 	
 	public User(String username, String email) {
 		super();

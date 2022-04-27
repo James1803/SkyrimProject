@@ -17,18 +17,21 @@ public class PostDTO {
 	
 	private UserDTO userDTO;
 	
+	private ReviewDTO reviewDTO;
+	
 	private LocalDate postedAt;
 	
 	protected PostDTO() {
 		
 	}
 
-	public PostDTO(int id, String title, String content, UserDTO userDTO, LocalDate postedAt) {
+	public PostDTO(int id, String title, String content, UserDTO userDTO, ReviewDTO reviewDTO, LocalDate postedAt) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.content = content;
 		this.userDTO = userDTO;
+		this.reviewDTO = reviewDTO;
 		this.postedAt = postedAt;
 	}
 
@@ -64,6 +67,14 @@ public class PostDTO {
 		this.userDTO = userDTO;
 	}
 
+	public ReviewDTO getReviewDTO() {
+		return reviewDTO;
+	}
+
+	public void setReviewDTO(ReviewDTO reviewDTO) {
+		this.reviewDTO = reviewDTO;
+	}
+
 	public LocalDate getPostedAt() {
 		return postedAt;
 	}
@@ -74,7 +85,7 @@ public class PostDTO {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(content, id, title, userDTO);
+		return Objects.hash(content, id, postedAt, reviewDTO, title, userDTO);
 	}
 
 	@Override
@@ -86,14 +97,17 @@ public class PostDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		PostDTO other = (PostDTO) obj;
-		return Objects.equals(content, other.content) && id == other.id && Objects.equals(title, other.title)
+		return Objects.equals(content, other.content) && id == other.id && Objects.equals(postedAt, other.postedAt)
+				&& Objects.equals(reviewDTO, other.reviewDTO) && Objects.equals(title, other.title)
 				&& Objects.equals(userDTO, other.userDTO);
 	}
 
 	@Override
 	public String toString() {
 		return "PostDTO [id=" + id + ", title=" + title + ", content=" + content + ", userDTO=" + userDTO
-				+ ", postedAt=" + postedAt + "]";
+				+ ", reviewDTO=" + reviewDTO + ", postedAt=" + postedAt + "]";
 	}
+	
+	
 	
 }

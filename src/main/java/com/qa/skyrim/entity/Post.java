@@ -44,6 +44,10 @@ public class Post {
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	private User user;
 	
+	@ManyToOne(optional = true, fetch = FetchType.LAZY)
+	@JoinColumn(name = "review_id", referencedColumnName = "id")
+	private Review review;
+	
 	protected Post() {
 		super();
 		this.postedAt = LocalDate.now();
@@ -56,20 +60,22 @@ public class Post {
 		this.postedAt = LocalDate.now();
 	}
 
-	public Post(String title, String content, User user) {
+	public Post(String title, String content, User user, Review review) {
 		super();
 		this.title = title;
 		this.content = content;
 		this.user = user;
+		this.review = review;
 		this.postedAt = LocalDate.now();
 	}
 	
-	public Post(int id, String title, String content, User user) {
+	public Post(int id, String title, String content, User user, Review review) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.content = content;
 		this.user = user;
+		this.review = review;
 		this.postedAt = LocalDate.now();
 	}
 
@@ -97,6 +103,14 @@ public class Post {
 		this.content = content;
 	}
 
+	public LocalDate getPostedAt() {
+		return postedAt;
+	}
+
+	public void setPostedAt(LocalDate postedAt) {
+		this.postedAt = postedAt;
+	}
+
 	public User getUser() {
 		return user;
 	}
@@ -105,23 +119,17 @@ public class Post {
 		this.user = user;
 	}
 
-	public LocalDate getPostedAt() {
-		return postedAt;
+	public Review getReview() {
+		return review;
 	}
 
-	public void setPostedAt(LocalDate postedAt) {
-		this.postedAt = postedAt;
-	}
-	
-	@Override
-	public String toString() {
-		return "Post [id=" + id + ", title=" + title + ", content=" + content + ", postedAt=" + postedAt + ", user="
-				+ user + "]";
+	public void setReview(Review review) {
+		this.review = review;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(content, id, postedAt, title, user);
+		return Objects.hash(content, id, postedAt, review, title, user);
 	}
 
 	@Override
@@ -134,7 +142,16 @@ public class Post {
 			return false;
 		Post other = (Post) obj;
 		return Objects.equals(content, other.content) && id == other.id && Objects.equals(postedAt, other.postedAt)
-				&& Objects.equals(title, other.title) && Objects.equals(user, other.user);
+				&& Objects.equals(review, other.review) && Objects.equals(title, other.title)
+				&& Objects.equals(user, other.user);
 	}
+
+	@Override
+	public String toString() {
+		return "Post [id=" + id + ", title=" + title + ", content=" + content + ", postedAt=" + postedAt + ", user="
+				+ user + ", review=" + review + "]";
+	}
+	
+	
 	
 }

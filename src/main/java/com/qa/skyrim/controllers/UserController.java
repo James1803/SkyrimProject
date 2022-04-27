@@ -58,7 +58,6 @@ public class UserController {
 		
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Location", "http://localhost:8080/user/" + newUser.getId());
-
 		return new ResponseEntity<>(newUser, headers, HttpStatus.CREATED);
 	}
 	

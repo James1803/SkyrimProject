@@ -50,6 +50,16 @@ public class PostService {
 		return dtos;
 	}
 	
+	public List<PostDTO> getPostsByReviewId(int id) {
+		List<Post> posts = postRepository.findByReviewId(id);
+		List<PostDTO> dtos = new ArrayList<>();
+		
+		for (Post post : posts) {
+			dtos.add(this.toDTO(post));
+		}
+		return dtos;
+	}
+	
 	public PostDTO getPost(int id) {
 		Optional<Post> post = postRepository.findById(id);
 		
