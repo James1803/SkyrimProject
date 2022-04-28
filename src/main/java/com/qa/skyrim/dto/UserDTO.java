@@ -11,13 +11,8 @@ public class UserDTO {
 
 	private int id;
 	
-	@NotNull
-	@NotBlank
-	@Size(min = 2, max = 16, message = "Username must have at least 2 characters, but no more than 16")
 	private String username;
 	
-	@NotNull
-	@Email
 	private String email;
 	
 	public UserDTO() {

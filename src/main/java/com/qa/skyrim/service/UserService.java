@@ -42,10 +42,6 @@ public class UserService {
 			dtos.add(this.toDTO(user));
 		}
 		return dtos;
-//		return userRepository.findAll()
-//							 .stream()
-//							 .map(this::toDTO)
-//							 .collect(Collectors.toList());
 	}
 	
 	public UserDTO getUser(int id) {
@@ -55,7 +51,6 @@ public class UserService {
 			return this.toDTO(user.get());
 		}
 		throw new EntityNotFoundException("User not found with id " + id);
-//		return this.toDTO(user.orElseThrow(() -> new EntityNotFoundException("User not found with id " + id)));
 	}
 	
 	public UserDTO createUser(NewUserDTO user) {
@@ -64,11 +59,7 @@ public class UserService {
 		return this.toDTO(newUser);
 	}
 	
-	@Transactional
-	// @Transactional wraps this whole method in a transaction
-	// - if a RuntimeException is thrown, the transaction is rolled back (i.e., the changes to the database are not made)
 	public UserDTO updateUser(NewUserDTO user, int id) {
-		// Alternate way of retrieving a user, no optionals involved
 		if (userRepository.existsById(id)) {
 			User savedUser = userRepository.getById(id);
 			savedUser.setEmail(user.getEmail());
@@ -88,10 +79,6 @@ public class UserService {
 	
 	private UserDTO toDTO(User user) {		
 		return this.modelMapper.map(user, UserDTO.class);
-		
-		// ModelMapper will create an instance of UserDTO
-		// - it will then assign the values of all fields in `user`, which have the same name
-		//   as the fields in `UserDTO.class`, to that new instance of UserDTO
 	}
 
 	public List<PostDTO> getUserPosts(int userId) {
