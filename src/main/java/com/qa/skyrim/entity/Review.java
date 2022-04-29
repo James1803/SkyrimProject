@@ -26,6 +26,11 @@ public class Review {
 	@NotBlank
 	@Size(min = 2, max = 1024, message = "A review may not be more than 1024 characters long")
 	private String reviewDesc;
+	
+	public Review() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public Review(int id, String reviewDesc) {
 		super();

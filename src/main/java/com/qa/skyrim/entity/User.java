@@ -28,6 +28,11 @@ public class User {
 
 	private String email;
 	
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public User(String username, String email) {
 		super();
 		this.username = username;

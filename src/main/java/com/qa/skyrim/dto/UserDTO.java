@@ -18,7 +18,7 @@ public class UserDTO {
 	public UserDTO() {
 		super();
 	}
-
+	
 	public UserDTO(int id, String username, String email) {
 		super();
 		this.id = id;
